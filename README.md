@@ -1,4 +1,3 @@
-cat << 'EOF' > README.md
 # Task Manager Mobile App
 
 ## 1. Présentation du projet  
