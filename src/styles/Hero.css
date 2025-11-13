@@ -1,0 +1,640 @@
+/* ========================================
+   HERO SECTION - Variables et Base
+   ======================================== */
+:root {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-card: #1e293b;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --accent: #06b6d4;
+  --accent-hover: #0891b2;
+  --accent-purple: #8b5cf6;
+  --border: #334155;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --gradient-primary: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
+  --gradient-purple: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+}
+
+/* ========================================
+   HERO SECTION - Layout Principal
+   ======================================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 2rem 4rem;
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+/* Animated background shapes */
+.hero-bg-shape {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-bg-shape-1 {
+  top: -200px;
+  right: -200px;
+  background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+}
+
+.hero-bg-shape-2 {
+  bottom: -200px;
+  left: -200px;
+  background: linear-gradient(135deg, #ec4899, #f59e0b);
+}
+
+/* ========================================
+   HERO CONTENT - Layout Grille
+   ======================================== */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* ========================================
+   HERO TEXT - Zone de texte à gauche
+   ======================================== */
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.greeting {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  background: var(--gradient-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradient-flow 5s ease infinite;
+}
+
+@keyframes gradient-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+  max-width: 600px;
+}
+
+/* ========================================
+   HERO INFO - Informations de contact
+   ======================================== */
+.hero-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.hero-info-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  position: relative;
+}
+
+.hero-info-item.clickable {
+  cursor: pointer;
+}
+
+.hero-info-item:hover {
+  background: rgba(30, 41, 59, 0.9);
+  border-color: var(--accent);
+  box-shadow: 0 8px 25px rgba(6, 182, 212, 0.2);
+}
+
+.hero-info-item svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.hero-info-item span {
+  flex: 1;
+}
+
+.external-icon {
+  color: var(--text-secondary) !important;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hero-info-item:hover .external-icon {
+  opacity: 1;
+}
+
+/* ========================================
+   CTA BUTTONS - Boutons d'action
+   ======================================== */
+.cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
+.btn-primary svg,
+.btn-primary span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Bouton CV avec gradient violet */
+.btn-cv {
+  background: var(--gradient-purple);
+  color: white;
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+}
+
+.btn-cv::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-cv:hover::before {
+  opacity: 1;
+}
+
+.btn-cv svg,
+.btn-cv span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-secondary {
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(20px);
+  color: var(--text-primary);
+  border: 2px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background: rgba(30, 41, 59, 1);
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px rgba(6, 182, 212, 0.2);
+}
+
+/* ========================================
+   SOCIAL LINKS - Liens sociaux
+   ======================================== */
+.social-links-hero {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.social-link-hero {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(20px);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-link-hero:hover {
+  background: var(--gradient-primary);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
+}
+
+.social-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  background: rgba(30, 41, 59, 0.95);
+  backdrop-filter: blur(20px);
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.3s ease;
+  border: 1px solid var(--accent);
+}
+
+.social-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--accent);
+}
+
+.social-link-hero:hover .social-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* ========================================
+   HERO IMAGE - Zone image à droite
+   ======================================== */
+.hero-image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.profile-image-container {
+  position: relative;
+  width: 450px;
+  height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-image {
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.4),
+    0 0 100px rgba(6, 182, 212, 0.3);
+  position: relative;
+  z-index: 2;
+  transition: all 0.4s ease;
+}
+
+.profile-image:hover {
+  box-shadow: 
+    0 35px 90px rgba(0, 0, 0, 0.5),
+    0 0 120px rgba(6, 182, 212, 0.5);
+  border-color: rgba(6, 182, 212, 0.5);
+}
+
+/* ========================================
+   PROFILE RINGS - Anneaux décoratifs
+   ======================================== */
+.profile-ring {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.profile-ring-1 {
+  width: 450px;
+  height: 450px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px dashed var(--accent);
+}
+
+.profile-ring-2 {
+  width: 500px;
+  height: 500px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px dotted var(--accent-purple);
+}
+
+/* ========================================
+   LIGHT MODE - Mode clair
+   ======================================== */
+.portfolio-wrapper.light .hero {
+  background: #f8fafc;
+}
+
+.portfolio-wrapper.light .hero-bg-shape {
+  opacity: 0.08;
+}
+
+.portfolio-wrapper.light .hero-title {
+  color: #0f172a;
+  -webkit-text-fill-color: transparent;
+}
+
+.portfolio-wrapper.light .subtitle,
+.portfolio-wrapper.light .description {
+  color: #475569;
+}
+
+.portfolio-wrapper.light .hero-info-item {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: #e2e8f0;
+}
+
+.portfolio-wrapper.light .hero-info-item:hover {
+  background: white;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-wrapper.light .btn-secondary {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: #e2e8f0;
+  color: #0f172a;
+}
+
+.portfolio-wrapper.light .btn-secondary:hover {
+  background: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.portfolio-wrapper.light .social-link-hero {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: #e2e8f0;
+  color: #0f172a;
+}
+
+.portfolio-wrapper.light .social-link-hero:hover {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
+}
+
+.portfolio-wrapper.light .profile-image {
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.15),
+    0 0 100px rgba(6, 182, 212, 0.2);
+}
+
+.portfolio-wrapper.light .social-tooltip {
+  background: rgba(255, 255, 255, 0.95);
+  color: #0f172a;
+}
+
+/* ========================================
+   RESPONSIVE - Tablette
+   ======================================== */
+@media (max-width: 1024px) {
+  .hero {
+    padding: 7rem 2rem 3rem;
+  }
+
+  .hero-content {
+    gap: 3rem;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .profile-image-container {
+    width: 380px;
+    height: 380px;
+  }
+
+  .profile-image {
+    width: 320px;
+    height: 320px;
+  }
+
+  .profile-ring-1 {
+    width: 380px;
+    height: 380px;
+  }
+
+  .profile-ring-2 {
+    width: 430px;
+    height: 430px;
+  }
+}
+
+/* ========================================
+   RESPONSIVE - Mobile
+   ======================================== */
+@media (max-width: 768px) {
+  .hero {
+    padding: 6rem 1.5rem 3rem;
+    min-height: auto;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .hero-text {
+    order: 2;
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero-image-wrapper {
+    order: 1;
+  }
+
+  .greeting {
+    font-size: 1rem;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .hero-info {
+    width: 100%;
+  }
+
+  .hero-info-item {
+    padding: 0.9rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .cta-buttons {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .btn {
+    flex: 1;
+    min-width: 140px;
+  }
+
+  .social-links-hero {
+    justify-content: center;
+  }
+
+  .profile-image-container {
+    width: 320px;
+    height: 320px;
+  }
+
+  .profile-image {
+    width: 280px;
+    height: 280px;
+  }
+
+  .profile-ring {
+    display: none;
+  }
+}
+
+/* ========================================
+   RESPONSIVE - Petit Mobile
+   ======================================== */
+@media (max-width: 480px) {
+  .hero {
+    padding: 5rem 1rem 2rem;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .hero-info-item {
+    padding: 0.8rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .hero-info-item svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .social-link-hero {
+    width: 50px;
+    height: 50px;
+  }
+
+  .profile-image-container {
+    width: 280px;
+    height: 280px;
+  }
+
+  .profile-image {
+    width: 240px;
+    height: 240px;
+  }
+}
