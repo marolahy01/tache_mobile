@@ -27,7 +27,6 @@ Cette application vise à offrir une solution mobile moderne et performante pour
 - Exportation des données au format CSV ou PDF.  
 - Synchronisation locale ou distante via SQL.  
 - Mode clair et sombre configurable.  
-- Authentification et gestion des profils utilisateurs.  
 
 ---
 
