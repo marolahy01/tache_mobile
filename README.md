@@ -42,6 +42,6 @@ Cette application vise à offrir une solution mobile moderne et performante pour
 | Internationalisation | react-native-localize, i18next |
 | Exportation de données | react-native-fs, expo-sharing |
 | Notifications | expo-notifications |
-| Interface utilisateur | React Native Paper / Tailwind React Native Classnames |
+| Interface utilisateur | React Native Paper |
 
 ---
